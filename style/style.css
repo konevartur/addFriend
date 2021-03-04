@@ -1,0 +1,318 @@
+body {
+	background: #C69C6C;
+	padding-bottom: 20px;
+}
+
+/* header
+=========================== */
+.header {
+	background: #794820;
+}
+
+.navbar-light .navbar-brand {
+	color: #C69C6C;
+
+	font-size: 36px;
+	font-family: "Caveat";
+	font-style: italic;
+	font-weight: bold;
+}
+
+.header .btn {
+	margin-left: 10px;
+	color: #fff;
+	border: 1px solid #fff;
+}
+
+.header .btn:hover {
+	background-color: #C69C6C;
+	border: 0;
+	outline: 0;
+}
+
+.header .btn:first-child {
+	margin-left: 0;
+}
+
+
+/* main
+=========================== */
+/* mainLeft */
+.mainLeft {
+	background: #794820;
+	border-top: 1px solid #C69C6C;
+}
+
+.mainLeft  .ava {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 0 auto;
+	margin-top: 40px;
+
+	border: 1px solid #C69C6C;
+	border-radius: 50%;
+}
+
+.mainLeft  .ava img {
+	width: 100%;
+	object-fit: contain;
+	border-radius: 50%;
+}
+
+.mainLeft  .button {
+	margin: 0 auto;
+	max-width: 150px;
+}
+
+.mainLeft  .btn {
+	width: 150px;
+	color: #fff;
+	border: 1px solid #fff;
+}
+
+.mainLeft  .btn:hover {
+	background-color: #C69C6C;
+	border: 0;
+	outline: 0;
+}
+
+/* mainRight */
+.mainRight {
+	background: #C69C6C;
+}
+
+.mainRight .frends {
+	width: 100%;
+	min-height: 50px;
+
+	margin-bottom: 20px;
+
+	padding-top: 15px;
+	border-bottom: 1px solid #794820;;
+}
+
+.mainRight .frends h5 {
+	margin-bottom: 0;
+	color: #794820;
+	font-size: 26px;
+	font-family: "Caveat";
+	font-style: italic;
+	font-weight: bold;
+}
+
+.mainRight .search {
+	position: relative;
+}
+
+.mainRight .search .form-control {
+	padding-left: 50px;
+}
+
+.mainRight .search .magnifier {
+	position: absolute;
+	top: 6px;
+	left: 17px;
+	color: #794820;
+}
+
+/* cardFrends */
+.cardFrends {
+	width: 100%;
+	min-height: 300px;
+
+	margin-top: 40px;
+	padding: 20px;
+	background: #794820;
+}
+
+.cardFrends  .ava {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 0 auto;
+
+	border: 1px solid #C69C6C;
+	border-radius: 50%;
+}
+
+.cardFrends .ava img {
+	width: 100%;
+	object-fit: contain;
+	border-radius: 50%;
+}
+
+.cardFrends .btn {
+	width: 150px;
+	color: #fff;
+	border: 1px solid #fff;
+	background-color: #794820;
+
+	font-size: 12px;
+}
+
+.cardFrends .btn:hover {
+	background-color: #C69C6C;
+}
+
+.cardFrends .btn:focus {
+	background-color: #C69C6C;
+}
+
+.cardFrends .list-group .list-group-item {
+	background-color: #C69C6C;
+}
+
+.cardFrends .name {
+	margin-bottom: 0;
+	color: #794820;
+	font-size: 26px;
+	font-family: "Caveat";
+	font-weight: bold;
+}
+
+.dropdown-menu {
+	background-color: #C69C6C;
+}
+
+.cardFrends .btnDelete:focus {
+	background-color: #9e2a2b;
+}
+
+.cardFrends .btnDelete:hover {
+	background-color: #9e2a2b;
+}
+
+/* addFrend
+====================== */
+.addFrend {
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 100%;
+	max-width: 500px;
+
+	padding: 20px 0 20px 0;
+
+	background: #794820;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+}
+
+.addFrend h1 {
+	color: #C69C6C;
+	font-size: 34px;
+	font-family: "Caveat";
+	font-weight: bold;
+	font-style: italic;
+}
+
+.addFrend  .ava {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 0 auto;
+	margin-top: 40px;
+
+	border: 1px solid #C69C6C;
+	border-radius: 50%;
+}
+
+.addFrend  .ava img {
+	width: 100%;
+	object-fit: contain;
+	border-radius: 50%;
+}
+
+.addFrend input {
+	width: 100%;
+
+	padding-left: 20px;
+
+	border: 0;
+	border-bottom: 1px solid #C69C6C;
+	outline: none;
+
+	background-color: #794820;
+
+	color: #C69C6C;
+	font-size: 16px;
+	font-family: "Caveat";
+	font-weight: bold;
+}
+
+input::-webkit-input-placeholder { color: #C69C6C; }
+
+.addFrend textarea {
+	width: 100%;
+	height: 150px;
+	padding: 20px;
+	
+	color: #794820;
+	outline: none;
+	border-radius: 5px;
+	background-color: #C69C6C;
+
+	resize: none;
+}
+
+textarea::-webkit-input-placeholder { color: #794820; }
+
+.addFrend h6 {
+	color: #794820;
+	font-family: "Caveat";
+	font-weight: bold;
+}
+
+.form-control:focus {
+	outline: 0;
+}
+
+.addFrend .btn {
+	color: #fff;
+	border: 1px solid #fff;
+	width: 100%;
+}
+
+.addFrend .btn:focus {
+	background-color: #C69C6C;
+}
+
+.addFrend .btn:hover {
+	background-color: #C69C6C;
+}
+
+/* scroll */
+::-webkit-scrollbar-button {
+	background-image:url('');
+	background-repeat:no-repeat;
+	width:5px;
+	height:0px;
+	cursor: pointer;
+}
+	
+::-webkit-scrollbar-track {
+	background-color:#794820;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color:#ae7d46;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color:#C69C6C;
+	cursor: pointer;
+}
+	
+::-webkit-resizer{
+	background-image:url('');
+	background-repeat:no-repeat;
+	width:4px;
+	height:0px;
+	cursor: pointer;
+}
+	
+::-webkit-scrollbar{
+	width: 6px;
+	cursor: pointer;
+}
