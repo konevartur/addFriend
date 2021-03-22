@@ -37,14 +37,13 @@ body {
 
 /* main
 =========================== */
-/* mainLeft */
-.mainLeft {
-	overflow: hidden;
+/* main-left */
+.main-left {
 	background: #794820;
 	border-top: 1px solid #C69C6C;
 }
 
-.mainLeft  .ava {
+.main-left  .ava {
 	max-width: 200px;
 	max-height: 200px;
 	margin: 0 auto;
@@ -54,35 +53,35 @@ body {
 	border-radius: 50%;
 }
 
-.mainLeft  .ava img {
+.main-left  .ava img {
 	width: 100%;
 	object-fit: contain;
 	border-radius: 50%;
 }
 
-.mainLeft  .button {
+.main-left  .button {
 	margin: 0 auto;
 	max-width: 150px;
 }
 
-.mainLeft  .btn {
+.main-left  .btn {
 	width: 150px;
 	color: #fff;
 	border: 1px solid #fff;
 }
 
-.mainLeft  .btn:hover {
+.main-left  .btn:hover {
 	background-color: #C69C6C;
 	border: 0;
 	outline: 0;
 }
 
-/* mainRight */
-.mainRight {
+/* main-right */
+.main-right {
 	background: #C69C6C;
 }
 
-.mainRight .frends {
+.main-right .frends {
 	width: 100%;
 	min-height: 50px;
 
@@ -92,7 +91,7 @@ body {
 	border-bottom: 1px solid #794820;;
 }
 
-.mainRight .frends h5 {
+.main-right .frends h5 {
 	margin-bottom: 0;
 	color: #794820;
 	font-size: 26px;
@@ -101,23 +100,23 @@ body {
 	font-weight: bold;
 }
 
-.mainRight .search {
+.main-right .search {
 	position: relative;
 }
 
-.mainRight .search .form-control {
+.main-right .search .form-control {
 	padding-left: 50px;
 }
 
-.mainRight .search .magnifier {
+.main-right .search .magnifier {
 	position: absolute;
 	top: 6px;
 	left: 17px;
 	color: #794820;
 }
 
-/* cardFrends */
-.cardFrends {
+/* card-friends */
+.card-friends {
 	width: 100%;
 	min-height: 300px;
 
@@ -127,22 +126,23 @@ body {
 	border-radius: 5px;
 }
 
-.cardFrends  .ava {
+.card-friends  .ava {
 	max-width: 200px;
 	max-height: 200px;
 	margin: 0 auto;
+	margin-bottom: 20px;
 
 	border: 1px solid #C69C6C;
 	border-radius: 50%;
 }
 
-.cardFrends .ava img {
+.card-friends .ava img {
 	width: 100%;
 	object-fit: contain;
 	border-radius: 50%;
 }
 
-.cardFrends .btn {
+.card-friends .btn {
 	width: 150px;
 	color: #fff;
 	border: 1px solid #fff;
@@ -151,19 +151,19 @@ body {
 	font-size: 12px;
 }
 
-.cardFrends .btn:hover {
+.card-friends .btn:hover {
 	background-color: #C69C6C;
 }
 
-.cardFrends .btn:focus {
+.card-friends .btn:focus {
 	background-color: #C69C6C;
 }
 
-.cardFrends .list-group .list-group-item {
+.card-friends .list-group .list-group-item {
 	background-color: #C69C6C;
 }
 
-.cardFrends .name {
+.card-friends .name {
 	margin-bottom: 0;
 	color: #794820;
 	font-size: 26px;
@@ -175,109 +175,12 @@ body {
 	background-color: #C69C6C;
 }
 
-.cardFrends .btnDelete:focus {
+.card-friends .btnDelete:focus {
 	background-color: #9e2a2b;
 }
 
 .cardFrends .btnDelete:hover {
 	background-color: #9e2a2b;
-}
-
-/* addFrend
-====================== */
-.addFrend {
-	margin: 0 auto;
-	margin-top: 20px;
-	width: 100%;
-	max-width: 500px;
-
-	padding: 20px 0 20px 0;
-
-	background: #794820;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-}
-
-.addFrend h1 {
-	color: #C69C6C;
-	font-size: 34px;
-	font-family: "Caveat";
-	font-weight: bold;
-	font-style: italic;
-}
-
-.addFrend  .ava {
-	max-width: 200px;
-	max-height: 200px;
-	margin: 0 auto;
-	margin-top: 40px;
-
-	border: 1px solid #C69C6C;
-	border-radius: 50%;
-}
-
-.addFrend  .ava img {
-	width: 100%;
-	object-fit: contain;
-	border-radius: 50%;
-}
-
-.addFrend input {
-	width: 100%;
-
-	padding-left: 20px;
-
-	border: 0;
-	border-bottom: 1px solid #C69C6C;
-	outline: none;
-
-	background-color: #794820;
-
-	color: #C69C6C;
-	font-size: 16px;
-	font-family: "Caveat";
-	font-weight: bold;
-}
-
-input::-webkit-input-placeholder { color: #C69C6C; }
-
-.addFrend textarea {
-	width: 100%;
-	height: 150px;
-	padding: 20px;
-	
-	color: #794820;
-	outline: none;
-	border-radius: 5px;
-	background-color: #C69C6C;
-
-	resize: none;
-}
-
-textarea::-webkit-input-placeholder { color: #794820; }
-
-.addFrend h6 {
-	color: #794820;
-	font-family: "Caveat";
-	font-weight: bold;
-}
-
-.form-control:focus {
-	outline: 0;
-}
-
-.addFrend .btn {
-	color: #fff;
-	border: 1px solid #fff;
-	width: 100%;
-}
-
-.addFrend .btn:focus {
-	background-color: #C69C6C;
-}
-
-.addFrend .btn:hover {
-	background-color: #C69C6C;
 }
 
 /* scroll */
