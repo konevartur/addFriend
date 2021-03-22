@@ -1,20 +1,4 @@
-/* const $mainRight = document.querySelector('.mainRight');
-const $userTpl = document.getElementById('user-card-template');
-const $user = $userTpl.cloneNode(true);
-const $user2 = $userTpl.cloneNode(true);
-
-$user.querySelector('.user-card-name').textContent = 'Artur';
-$user.removeAttribute('id');
-$user.removeAttribute('style');
-$mainRight.appendChild($user);
-
-$user2.querySelector('.user-card-name').textContent = 'Max';
-$user2.removeAttribute('id');
-$user2.removeAttribute('style');
-$mainRight.appendChild($user2);
- */
-
-const $mainRight = document.getElementById('mainRight');
+const $mainRight = document.getElementById('main-right');
 const $cardTpl = document.getElementById('card-frends-template');
 
 function request(method, url) {
