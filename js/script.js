@@ -16,14 +16,6 @@ $mainRight.appendChild($user2);
 
 const $mainRight = document.getElementById('mainRight');
 const $cardTpl = document.getElementById('card-frends-template');
-const $card = $cardTpl.cloneNode(true);
-
-$card.removeAttribute('id');
-$card.removeAttribute('style');
-$mainRight.append($card);
-
-
-
 
 function request(method, url) {
 	return new Promise((resolve, reject) => {
@@ -42,6 +34,24 @@ function request(method, url) {
 
 //пройтись циклом по массиву с пользователями и вывести их
 //пользователя запихать в карточку
-request('GET', 'https://reqres.in/api/users?page=1').then(function (response) {
+request('GET', 'https://reqres.in/api/users?page=1')
+	.then(function (response) {
+		const cardsArray = response.data;
 
-})
+		cardsArray.forEach((user) => {
+			const $card = $cardTpl.cloneNode(true);
+
+			$card.removeAttribute('id');
+			$card.removeAttribute('style');
+
+			const $userName = $card.querySelector('.js-user-name');
+			const $userAva = $card.querySelector('.js-user-ava');
+
+			$userName.textContent = `${user.first_name}`;
+			$userAva.setAttribute('src', user.avatar);
+
+			$mainRight.append($card);
+		});
+	});
+
+	
