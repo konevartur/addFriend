@@ -43,7 +43,7 @@ body {
 	border-top: 1px solid #C69C6C;
 }
 
-.main-left  .ava {
+.main-left__ava {
 	max-width: 200px;
 	max-height: 200px;
 	margin: 0 auto;
@@ -53,24 +53,24 @@ body {
 	border-radius: 50%;
 }
 
-.main-left  .ava img {
+.main-left__ava img {
 	width: 100%;
 	object-fit: contain;
 	border-radius: 50%;
 }
 
-.main-left  .button {
+.main-left__button {
 	margin: 0 auto;
 	max-width: 150px;
 }
 
-.main-left  .btn {
+.main-left .btn {
 	width: 150px;
 	color: #fff;
 	border: 1px solid #fff;
 }
 
-.main-left  .btn:hover {
+.main-left .btn:hover {
 	background-color: #C69C6C;
 	border: 0;
 	outline: 0;
@@ -81,7 +81,7 @@ body {
 	background: #C69C6C;
 }
 
-.main-right .frends {
+.main-right__frends {
 	width: 100%;
 	min-height: 50px;
 
@@ -91,7 +91,7 @@ body {
 	border-bottom: 1px solid #794820;;
 }
 
-.main-right .frends h5 {
+.main-right__frends h5 {
 	margin-bottom: 0;
 	color: #794820;
 	font-size: 26px;
@@ -100,15 +100,15 @@ body {
 	font-weight: bold;
 }
 
-.main-right .search {
+.main-right__search {
 	position: relative;
 }
 
-.main-right .search .form-control {
+.main-right__search .form-control {
 	padding-left: 50px;
 }
 
-.main-right .search .magnifier {
+.main-right__search-magnifier {
 	position: absolute;
 	top: 6px;
 	left: 17px;
@@ -126,7 +126,7 @@ body {
 	border-radius: 5px;
 }
 
-.card-friends  .ava {
+.card-friends__ava {
 	max-width: 200px;
 	max-height: 200px;
 	margin: 0 auto;
@@ -136,7 +136,7 @@ body {
 	border-radius: 50%;
 }
 
-.card-friends .ava img {
+.card-friends__ava img {
 	width: 100%;
 	object-fit: contain;
 	border-radius: 50%;
