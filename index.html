@@ -60,7 +60,7 @@
 				</div>
 
 				<!-- mainRight -->
-				<div class="col-sm-8 mainRight">
+				<div id="mainRight" class="mainRight col-sm-8">
 					<div class="frends">
 						<h5>Все друзья ...</h5>
 					</div>
@@ -76,24 +76,23 @@
 					</div>
 
 					<!-- cardFrends -->
-					<div class="cardFrends d-flex align-items-center text-center">
+					<div id="card-frends-template" class="cardFrends d-flex align-items-center text-center"
+						style="display: none !important;">
 						<div class="container">
 							<div class="row">
 								<div class="col">
 									<div class="ava">
-										<img src="images/ava.jpg" alt="ava">
+										<img id="avatar" src="images/ava.jpg" alt="ava">
 									</div>
 								</div>
 								<div class="col list mt-3">
 									<ul class="list-group">
-										<li class="list-group-item name">Имя</li>
+										<li class="js-user-name list-group-item name">Имя</li>
 
 										<li class="list-group-item">
-											<div class="dropdown">
-												<button class="btn" type="button">
-													Полная информация
-												</button>
-											</div>
+											<button class="btn" type="button">
+												Полная информация
+											</button>
 										</li>
 
 										<li class="list-group-item">
@@ -106,79 +105,12 @@
 					</div>
 					<!-- / cardFrends -->
 
-					<!-- cardFrends -->
-					<div class="cardFrends d-flex align-items-center text-center">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="ava">
-										<img src="images/ava.jpg" alt="ava">
-									</div>
-								</div>
-								<div class="col list mt-3">
-									<ul class="list-group">
-										<li class="list-group-item name">Имя</li>
+					<!-- удалить потом -->
+					<!-- <div id="user-card-template" style="display: none;">
+						<h1 class="user-card-name">name</h1>
+						<p class="user-card-email">email</p>
+					</div> --> 
 
-										<li class="list-group-item">
-											<div class="dropdown">
-												<button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-													aria-expanded="false">
-													Полная информация
-												</button>
-												<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-													<li><a class="dropdown-item" href="#">Фамилия</a></li>
-													<li><a class="dropdown-item" href="#">Возраст</a></li>
-													<li><a class="dropdown-item" href="#">Пол</a></li>
-												</ul>
-											</div>
-										</li>
-
-										<li class="list-group-item">
-											<button type="button" class="btn btnDelete">Удалить из друзей</button>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- / cardFrends -->
-
-					<!-- cardFrends -->
-					<div class="cardFrends d-flex align-items-center text-center">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="ava">
-										<img src="images/ava.jpg" alt="ava">
-									</div>
-								</div>
-								<div class="col list mt-3">
-									<ul class="list-group">
-										<li class="list-group-item name">Имя</li>
-
-										<li class="list-group-item">
-											<div class="dropdown">
-												<button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-													aria-expanded="false">
-													Полная информация
-												</button>
-												<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-													<li><a class="dropdown-item" href="#">Фамилия</a></li>
-													<li><a class="dropdown-item" href="#">Возраст</a></li>
-													<li><a class="dropdown-item" href="#">Пол</a></li>
-												</ul>
-											</div>
-										</li>
-
-										<li class="list-group-item">
-											<button type="button" class="btn btnDelete">Удалить из друзей</button>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- / cardFrends -->
 				</div><!-- mainRight -->
 			</div>
 		</div>

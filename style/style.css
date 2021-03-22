@@ -39,6 +39,7 @@ body {
 =========================== */
 /* mainLeft */
 .mainLeft {
+	overflow: hidden;
 	background: #794820;
 	border-top: 1px solid #C69C6C;
 }
@@ -123,6 +124,7 @@ body {
 	margin-top: 40px;
 	padding: 20px;
 	background: #794820;
+	border-radius: 5px;
 }
 
 .cardFrends  .ava {
