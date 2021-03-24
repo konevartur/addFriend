@@ -175,11 +175,11 @@ body {
 	background-color: #C69C6C;
 }
 
-.card-friends .btnDelete:focus {
+.card-friends .btn-delete-user:focus {
 	background-color: #9e2a2b;
 }
 
-.cardFrends .btnDelete:hover {
+.card-friends .btn-delete-user:hover {
 	background-color: #9e2a2b;
 }
 

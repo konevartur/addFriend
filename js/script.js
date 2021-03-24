@@ -16,13 +16,17 @@ function request(method, url) {
 	});
 }
 
-//пройтись циклом по массиву с пользователями и вывести их
-//пользователя запихать в карточку
 request('GET', 'https://reqres.in/api/users?page=1')
 	.then(function (response) {
 		const cardsArray = response.data;
 
 		cardsArray.forEach((user) => {
+
+			const deleteUser = function () {
+				$card.remove()
+				$deleteUser.removeEventListener('click', deleteUser);
+			}
+
 			const $card = $cardTpl.cloneNode(true);
 
 			$card.removeAttribute('id');
@@ -35,7 +39,10 @@ request('GET', 'https://reqres.in/api/users?page=1')
 			$userAva.setAttribute('src', user.avatar);
 
 			$mainRight.append($card);
+
+			const $deleteUser = $card.querySelector('.btn-delete-user');
+
+			$deleteUser.addEventListener('click', deleteUser)
 		});
 	});
 
-	
