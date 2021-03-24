@@ -1,3 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
 body {
 	background: #C69C6C;
 	padding-bottom: 20px;
@@ -106,6 +113,7 @@ body {
 
 .main-right__search .form-control {
 	padding-left: 50px;
+	margin-bottom: 20px;
 }
 
 .main-right__search-magnifier {
@@ -120,7 +128,7 @@ body {
 	width: 100%;
 	min-height: 300px;
 
-	margin-top: 40px;
+	margin-top: 20px;
 	padding: 20px;
 	background: #794820;
 	border-radius: 5px;
@@ -220,4 +228,50 @@ body {
 ::-webkit-scrollbar{
 	width: 6px;
 	cursor: pointer;
+}
+
+/* pagination
+=========================== */
+.wrapper {
+	width: 100%;
+}
+
+.pagin ul{
+	display: flex;
+	justify-content: space-between;
+  text-align: center;
+	padding-left: 0;
+}
+.pagin ul li{
+  color: #794820;
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.pagin ul li.numb.first{
+  margin: 0px 3px 0 -5px;
+}
+.pagin ul li.numb.last{
+  margin: 0px -5px 0 3px;
+}
+.pagin ul li.dots{
+  font-size: 22px;
+  cursor: default;
+}
+.pagin ul li.btn{
+  padding: 0 10px;
+  border-radius: 50px;
+}
+.pagin li.active,
+.pagin ul li.numb:hover,
+.pagin ul li:first-child:hover,
+.pagin ul li:last-child:hover{
+  color: #fff;
+	font-size: 30px;
 }
