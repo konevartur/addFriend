@@ -230,7 +230,26 @@ body {
 	cursor: pointer;
 }
 
-/* pagination
+/* pagination */
+/* #pagin {
+	display: flex;
+	padding: 0;
+	list-style-type: none;
+}
+
+#pagin li {
+	margin-right: 5px;
+	padding: 10px;
+	border: 1px solid white;
+}
+
+#pagin li:hover, #pagin li.active {
+	cursor: pointer;
+	color: rebeccapurple;
+	border: 1px solid rebeccapurple;
+} */
+
+/* pagination - потом удалить
 =========================== */
 .wrapper {
 	width: 100%;
@@ -273,5 +292,12 @@ body {
 .pagin ul li:first-child:hover,
 .pagin ul li:last-child:hover{
   color: #fff;
+	font-size: 30px;
+}
+
+.fa-arrow-circle-o-right {
+	font-size: 30px;
+}
+.fa-arrow-circle-o-left {
 	font-size: 30px;
 }
