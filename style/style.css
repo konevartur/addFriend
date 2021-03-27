@@ -146,9 +146,9 @@ body {
 
 .card-friends__ava img {
 	width: 100%;
-	object-fit: contain;
 	border-radius: 50%;
 }
+
 
 .card-friends .btn {
 	width: 150px;
@@ -250,56 +250,3 @@ body {
 	cursor: pointer;
 	background-color: transparent;
 }
-
-/* pagination - потом удалить
-=========================== */
-/* .wrapper {
-	width: 100%;
-}
-
-.pagin ul{
-	display: flex;
-	justify-content: space-between;
-  text-align: center;
-	padding-left: 0;
-}
-.pagin ul li{
-  color: #794820;
-  list-style: none;
-  line-height: 45px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.3s ease;
-}
-
-.pagin ul li.numb.first{
-  margin: 0px 3px 0 -5px;
-}
-.pagin ul li.numb.last{
-  margin: 0px -5px 0 3px;
-}
-.pagin ul li.dots{
-  font-size: 22px;
-  cursor: default;
-}
-.pagin ul li.btn{
-  padding: 0 10px;
-  border-radius: 50px;
-}
-.pagin li.active,
-.pagin ul li.numb:hover,
-.pagin ul li:first-child:hover,
-.pagin ul li:last-child:hover{
-  color: #fff;
-	font-size: 30px;
-}
-
-.fa-arrow-circle-o-right {
-	font-size: 30px;
-}
-.fa-arrow-circle-o-left {
-	font-size: 30px;
-} */
