@@ -229,24 +229,3 @@ body {
 	width: 6px;
 	cursor: pointer;
 }
-
-/* pagination */
-#pagin {
-	display: flex;
-	padding: 0;
-	list-style-type: none;
-}
-
-#pagin li {
-	margin-right: 5px;
-	padding: 10px;
-	border: 1px solid #794820;
-	border-radius: 10px;
-	color: #fff;
-	background-color: #794820;
-}
-
-#pagin li:hover, #pagin li.active {
-	cursor: pointer;
-	background-color: transparent;
-}

@@ -4,80 +4,12 @@ const $cardTpl = document.getElementById('card-frends-template');
 
 const $pagination = document.querySelector('#pagin');
 
-async function getResponse() {
-	let response = await fetch('https://reqres.in/api/users?page&per_page=12');
-	let content = await response.json();
-	let arrayCards = content.data;
-
-	const numberOfCardsPage = 3;
-
-	const countBtnPaginator = Math.ceil(arrayCards.length / numberOfCardsPage);
-
-	// создание пагинации
-	const arrayLi = [];
-	for (let i = 1; i <= countBtnPaginator; i++) {
-		const li = document.createElement('li');
-		li.innerHTML = i;
-		$pagination.appendChild(li);
-		arrayLi.push(li);
-	};
-
-	let active; // активная кнопка
-	showCards(arrayLi[0]);
-
-	arrayLi.forEach(function (handlePaginator) {
-		handlePaginator.addEventListener('click', function () {
-			showCards(this);
-		});
-	});
-
-	function showCards(btnPaginator) {
-		if (active) {
-			active.classList.remove('active');
-		}
-		active = btnPaginator;
-		btnPaginator.classList.add('active');
-
-		const btnNum = +btnPaginator.innerHTML;
-
-		const start = (btnNum - 1) * numberOfCardsPage;
-		const end = start + numberOfCardsPage;
-		const notesCards = arrayCards.slice(start, end);
-
-		// создание карточек
-		$cardsWrapper.innerHTML = '';
-
-		notesCards.forEach((user) => {
-
-			const $card = $cardTpl.cloneNode(true);
-
-			$card.removeAttribute('id');
-			$card.removeAttribute('style');
-
-			const $userName = $card.querySelector('.js-user-name');
-			const $userAva = $card.querySelector('.js-user-ava');
-
-			$userName.textContent = `${user.first_name}`;
-			$userAva.setAttribute('src', user.avatar);
-
-			$cardsWrapper.append($card);
-		});
-	};
-
-	$mainRight.addEventListener('click', event => {
-
-		if (event.target.classList.contains('btn-delete-user')) {
-			const deleteCardUser = event.target.closest('.card-friends');
-			deleteCardUser.remove();
-		};
-	});
-};
-
-getResponse()
+let preventRequesting = false;
+let stopRequest = false;
+let pageNumber = 1;
 
 
-// предыдущий код ===========================//
-/* function request(method, url) {
+function request(method, url) {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 		xhr.open(method, url);
@@ -90,27 +22,17 @@ getResponse()
 			}
 		};
 	});
-} */
-
-/* // pagination
-let pagination = document.querySelector('#pagin');
-// кол-во страниц
-let totalPages = 8;
-
-for (let i = 1; i <= totalPages; i++) {
-	let li = document.createElement('li');
-	li.classList.add('pagin-li');
-	li.innerHTML = i;
-	pagination.appendChild(li);
-}
+};
 
 function makeRequest() {
-	request('GET', `https://reqres.in/api/users?page&per_page=12`)
-
+	request('GET', `https://reqres.in/api/users?page=${pageNumber}&per_page=3`)
 		.then(function (response) {
 			const cardsArray = response.data;
+			if (response.data.length === 0) {
+				stopRequest = true;
+			}
 
-			$cardsWrapper.innerHTML = '';
+			preventRequesting = false;
 
 			cardsArray.forEach((user) => {
 
@@ -128,18 +50,26 @@ function makeRequest() {
 				$cardsWrapper.append($card);
 			});
 		});
+}
 
-	$mainRight.addEventListener('click', event => {
+makeRequest();
 
-		if (event.target.classList.contains('btn-delete-user')) {
-			const deleteCardUser = event.target.closest('.card-friends');
-			deleteCardUser.remove();
-		};
+$mainRight.addEventListener('click', event => {
+	if (event.target.classList.contains('btn-delete-user')) {
+		const deleteCardUser = event.target.closest('.card-friends');
+		deleteCardUser.remove();
+	}
+});
 
-		if (event.target.classList.contains('pagin-li')) {
-			console.log(event.target.textContent);
-		};
-	});
-};
+window.addEventListener('scroll', function () {
+	if (!stopRequest) {
+		if (!preventRequesting && (Math.ceil(window.pageYOffset + innerHeight) + 150) > document.body.clientHeight) {
+			preventRequesting = true;
+			pageNumber++;
+			makeRequest();
+		}
+	}
+});
 
-makeRequest(); */
+// если ответ с пустым массивом, то больше не делать запрос
+// отталкиваться от флага
