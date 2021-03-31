@@ -10,6 +10,10 @@ body {
 	padding-bottom: 20px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
 /* header
 =========================== */
 .header {
@@ -83,7 +87,8 @@ body {
 	outline: 0;
 }
 
-/* main-right */
+/* main-right 
+==============================*/
 .main-right {
 	background: #C69C6C;
 }
@@ -113,7 +118,6 @@ body {
 
 .main-right__search .form-control {
 	padding-left: 50px;
-	margin-bottom: 20px;
 }
 
 .main-right__search-magnifier {
@@ -123,11 +127,9 @@ body {
 	color: #794820;
 }
 
-/* card-friends */
+/* card-friends 
+===========================*/
 .card-friends {
-	width: 100%;
-	min-height: 300px;
-
 	margin-top: 20px;
 	padding: 20px;
 	background: #794820;
@@ -191,7 +193,8 @@ body {
 	background-color: #9e2a2b;
 }
 
-/* scroll */
+/* scroll 
+===========================*/
 ::-webkit-scrollbar-button {
 	background-image:url('');
 	background-repeat:no-repeat;
@@ -228,6 +231,10 @@ body {
 ::-webkit-scrollbar{
 	width: 6px;
 	cursor: pointer;
+}
+
+::-webkit-scrollbar-corner {
+	display: none;
 }
 
 /* loader 
@@ -290,7 +297,7 @@ body {
 
 .close-mymodal {
 	position: absolute;
-	top: -3px;
+	top: -5px;
   right: 5px;
 
 	color: #794820;
@@ -315,6 +322,7 @@ body {
 	font-size: 36px;
 	font-family: "Caveat";
 	font-weight: bold;
+	line-height: 1;
 }
 
 .js-email {

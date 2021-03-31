@@ -32,7 +32,7 @@ function makeRequest() {
 	request('GET', `https://reqres.in/api/users?page=${pageNumber}&per_page=3`)
 		.then(function (response) {
 			const cardsArray = response.data;
-			console.log(cardsArray);
+			console.log(response.data);
 			if (cardsArray.length === 0) {
 				stopRequest = false;
 			}
@@ -50,18 +50,21 @@ function makeRequest() {
 
 				const $userName = $card.querySelector('.js-user-name');
 				const $userAva = $card.querySelector('.js-user-ava');
+				const $userInfo = $card.querySelector('.js-btn-info');
 
 				$userName.textContent = `${user.first_name}`;
 				$userAva.setAttribute('src', user.avatar);
 
+				$userInfo.addEventListener('click', event => {
+					if (event.target.classList.contains('js-btn-info')) {
+						const $userLastName = document.querySelector('.js-last-name');
+						const $userEmail = document.querySelector('.js-email');
+						$userLastName.textContent = `${user.last_name}`;
+						$userEmail.textContent = `${user.email}`;
+					}
+				})
+
 				$cardsWrapper.append($card);
-
-				// modal window
-				const $userLastName = document.querySelector('.js-last-name');
-				const $userEmail = document.querySelector('.js-email');
-				$userLastName.textContent = `${user.last_name}`;
-				$userEmail.textContent = `${user.email}`;
-
 			});
 		});
 }
@@ -106,3 +109,5 @@ window.addEventListener('click', event => {
 		mymodal.style.display = 'none';
 	}
 });
+
+
