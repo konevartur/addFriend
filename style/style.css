@@ -229,3 +229,117 @@ body {
 	width: 6px;
 	cursor: pointer;
 }
+
+/* loader 
+=======================*/
+#loader {
+	width: 200px;
+	margin: 0 auto;
+	z-index: 100;
+}
+
+#loader img{
+	width: 100%;
+}
+
+.hide {
+	display: none;
+}
+
+/* modal 
+=======================*/
+.mymodal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	margin: 0 auto;
+	padding: 20px;
+
+	background: rgba(0, 0, 0, .6);
+	overflow: auto;
+	z-index: 100;
+}
+
+.mymodal-content {
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	min-height: 200px;
+
+	padding: 40px 10px 10px 10px;
+	margin: 0 auto;
+	margin-top: 10%;
+
+	background-color: #C69C6C;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .9);
+	z-index: 200;
+}
+
+.mymodal-info {
+	position: absolute;
+	top: 2px;
+	left: 8px;
+	color: #794820;
+	text-decoration: underline;
+}
+
+.close-mymodal {
+	position: absolute;
+	top: -3px;
+  right: 5px;
+
+	color: #794820;
+	float: right;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+.mymodal-items {
+	color: #794820;
+}
+
+.mymodal-item {
+	border-bottom: 1px solid #794820;
+}
+
+.mymodal-items h6 {
+	margin-top: 10px;
+}
+
+.js-last-name {
+	font-size: 36px;
+	font-family: "Caveat";
+	font-weight: bold;
+}
+
+.js-email {
+	font-size: 20px;
+}
+
+.mymodal-item:last-child {
+	border-bottom: 0;
+}
+
+.mymodal-item textarea {
+	height: 200px;
+	width: 100%;
+
+	margin-top: 10px;
+	padding: 10px;
+
+	border: 1px solid #794820;
+	border-radius: 5px;
+	outline: 0;
+
+	color: #794820;
+	text-align: justify;
+}
+
+.mymodal-item textarea:disabled{
+	background-color: #C69C6C;
+}
