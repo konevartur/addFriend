@@ -54,9 +54,50 @@
 
 					<div class="main-left__button">
 						<div>
-							<a class="btn mt-3" href="#">Создать друга!</a>
+							<button id="btn-create-friend" class="btn mt-3" type="button">Создать запись</button>
 						</div>
 					</div>
+
+					<!-- 	modal-create-friend -->
+					<div id="modal_cf" class="modal_cf">
+
+						<div class="modal-cf-content">
+
+							<span class="close-modal-cf"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+
+							<div class="modal-cf-ava">
+								<img src="images/plug.png" alt="plug">
+							</div>
+
+							<form class="modal-cf-form">
+								<div class="modal-cf-item">
+									<input class="modal-cf-form-input" type="text" name="name" placeholder="Имя друга / подруги">
+								</div>
+
+								<div class="modal-cf-item">
+									<input class="modal-cf-form-input" type="text" name="last-name" placeholder="Фамилия друга / подруги">
+								</div>
+
+								<div class="modal-cf-item">
+									<input class="modal-cf-form-input" type="email" name="email" placeholder="Email друга / подруги">
+								</div>
+
+								<div class="modal-cf-item">
+									<input class="modal-cf-form-input" type="tel" name="tel" placeholder="Телефон друга / подруги">
+								</div>
+
+								<div class="modal-cf-item">
+									<textarea class="modal-cf-form-textarea" placeholder="Запись о друге / подруге"></textarea>
+								</div>
+
+								<div class="modal-cf-item">
+									<button class="modal-cf-form-btn" type="submit">Создать запись</button>
+								</div>
+
+							</form>
+						</div>
+
+					</div><!-- 	/ modal-create-friend -->
 				</div>
 
 				<!-- main-right -->
@@ -89,7 +130,6 @@
 
 									<div class="col-md list">
 										<ul class="list-group">
-
 											<li class="js-user-name list-group-item name">Имя</li>
 
 											<li class="list-group-item">
@@ -109,12 +149,12 @@
 						<!-- / cardFrends -->
 					</div><!-- cards-wrapper -->
 
-					<!-- loader -->
-					<div id="loader">
-						<img src="./images/preloader.svg" alt="">
+					<!-- preloader -->
+					<div id="preloader">
+						<img src="./images/preloader.svg" alt="preloader">
 					</div>
 
-					<!-- 	modal -->
+					<!-- 	mymodal-all-info -->
 					<div id="mymodal" class="mymodal">
 
 						<div class="mymodal-content">
@@ -126,6 +166,11 @@
 							<span class="close-mymodal"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
 
 							<div class="mymodal-items">
+								<h6>Имя:</h6>
+								<div id="js-user-name" class="mymodal-item">
+									Имя
+								</div>
+
 								<h6>Фамилия:</h6>
 								<div class="mymodal-item js-last-name">
 									Фамилия
@@ -137,14 +182,14 @@
 								</div>
 
 								<div class="mymodal-item">
-									<h6>Обо мне</h6>
-									<textarea
-										disabled="disabled">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sint dolorem delectus debitis atque culpa vero id placeat quasi et. Ab accusantium eligendi nostrum numquam veritatis. Dolorum, veniam praesentium delectus animi dicta quisquam dolores molestiae! Neque at minima doloribus quae animi, aliquam est, incidunt delectus, commodi in placeat officia praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti sequi dicta molestiae! Laboriosam autem nesciunt sint nobis atque culpa tempore velit asperiores animi, esse maiores quisquam aliquid? Minus obcaecati nisi maiores a excepturi ex architecto recusandae? Quam error sequi totam omnis, dolore cupiditate eos a, similique repudiandae nesciunt quasi delectus.</textarea>
+									<h6>Описание друга</h6>
+									<textarea disabled="disabled">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sint dolorem delectus debitis atque culpa vero id placeat quasi et. Ab accusantium eligendi nostrum numquam veritatis. Dolorum, veniam praesentium delectus animi dicta quisquam dolores molestiae! Neque at minima doloribus quae animi, aliquam est, incidunt delectus, commodi in placeat officia praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti sequi dicta molestiae! Laboriosam autem nesciunt sint nobis atque culpa tempore velit asperiores animi, esse maiores quisquam aliquid? Minus obcaecati nisi maiores a excepturi ex architecto recusandae? Quam error sequi totam omnis, dolore cupiditate eos a, similique repudiandae nesciunt quasi delectus.
+									</textarea>
 								</div>
 							</div>
 						</div>
 
-					</div><!-- 	/ modal -->
+					</div><!-- 	/ mymodal-all-info -->
 
 				</div><!-- / main-right -->
 			</div>
