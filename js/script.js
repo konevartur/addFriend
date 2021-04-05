@@ -89,7 +89,7 @@ $mainRight.addEventListener('click', event => {
 
 			request('GET', `https://reqres.in/api/users/${id}`)
 				.then(response => {
-					
+
 					preventRequestInModal = false;
 
 					const user = response.data;
@@ -101,7 +101,7 @@ $mainRight.addEventListener('click', event => {
 					$userName.textContent = `${user.first_name}`;
 					$userLastName.textContent = `${user.last_name}`;
 					$userEmail.textContent = `${user.email}`;
-					
+
 					mymodal.style.display = 'block';
 				});
 		}
@@ -153,3 +153,59 @@ window.addEventListener('click', event => {
 		modal_cf.style.display = 'none';
 	}
 });
+
+// загрузка фотографии
+upload({
+	accept: ['.png', '.jpg', '.jpge', '.gif']
+});
+
+function upload(options = {}) {
+	const $input = document.querySelector('#modal-cf-file');
+	const $open = document.createElement('button');
+	const $avaInModal = document.querySelector('.modal-cf-ava');
+
+	$open.classList.add('modal-cf-file-btn')
+	$open.textContent = 'Выбрать фотографию';
+
+	if (options.accept && Array.isArray(options.accept)) {
+		$input.setAttribute('accept', options.accept.join(','));
+	}
+
+	$input.insertAdjacentElement('afterend', $open);
+
+	const triggerInput = () => $input.click();
+	const changeHandler = event => {
+		// если нет файлов, то не нужно делать функционал
+		if (!event.target.files.length) {
+			return
+		}
+
+		// пишу логику если файл есть
+		// с помощью Array.from привожу к массиву
+		const files = Array.from(event.target.files);
+
+		files.forEach(file => {
+			// если в file не содержится строчки 'image', то ничего не делается
+			if (!file.type.match('image')) {
+				return
+			}
+
+			// создаю reader
+			const reader = new FileReader();
+
+			// перед тем, как начинаю что-то считывать, добавляю обработчик события, что как только с помощью reader считаю файл, тогда будет выполнение
+			reader.onload = event => {
+				const src = event.target.result;
+				$avaInModal.innerHTML = `<img src="${event.target.result}" alt=${file.name}/>`;
+			}
+
+			// после кода выше считываю сам файл
+			// readAsDataURL асинхронный, поэтому выше стоит обработчик событий
+			reader.readAsDataURL(file);
+		});
+	}
+
+	$open.addEventListener('click', triggerInput);
+	$input.addEventListener('change', changeHandler);
+}
+
