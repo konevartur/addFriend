@@ -47,10 +47,8 @@
 			<div class="row">
 
 				<!-- main-left -->
-				<div class="main-left col-sm-4 p-3">
-					<div class="main-left__ava">
-						<img src="images/ava.jpg" alt="ava">
-					</div>
+				<div class="main-left col-md-4 p-3">
+					<div class="main-left__ava"></div>
 
 					<div class="main-left__button">
 						<div>
@@ -65,15 +63,15 @@
 
 							<span class="close-modal-cf"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
 
-							<div class="modal-cf-ava">
-								Здесь может быть фотография вашего друга <br> или подруги
-							</div>
+							<form id="modal-cf-form" class="modal-cf-form">
+								<div class="modal-cf-ava modal-cf-item">
+									Здесь может быть фотография вашего друга <br> или подруги
+								</div>
 
-							<input id="modal-cf-file" type="file">
+								<input id="modal-cf-file" type="file">
 
-							<form class="modal-cf-form">
 								<div class="modal-cf-item">
-									<input class="modal-cf-form-input" type="text" name="name" placeholder="Имя друга / подруги">
+									<input class="modal-cf-form-input modal-cf-name" type="text" name="name" placeholder="Имя друга / подруги">
 								</div>
 
 								<div class="modal-cf-item">
@@ -89,10 +87,11 @@
 								</div>
 
 								<div class="modal-cf-item">
-									<textarea class="modal-cf-form-textarea" placeholder="Запись о друге / подруге"></textarea>
+									<textarea class="modal-cf-form-textarea" name="text"
+										placeholder="Запись о друге / подруге"></textarea>
 								</div>
 
-								<div class="modal-cf-item">
+								<div>
 									<button class="modal-cf-form-btn" type="submit">Создать запись</button>
 								</div>
 
@@ -100,12 +99,21 @@
 						</div>
 
 					</div><!-- 	/ modal-create-friend -->
-				</div>
+
+					<!-- note_done  -->
+					<div id="note_done" class="note_done">
+						<div class="note_done__content">
+							<p>Запись успешно создана!</p>
+						</div>
+
+					</div>
+
+				</div> <!-- / main-left -->
 
 				<!-- main-right -->
-				<div id="main-right" class="main-right col-sm-8 align-items-center">
+				<div id="main-right" class="main-right col-md-8 align-items-center">
 					<div class="main-right__frends">
-						<h5>Все друзья ...</h5>
+						<h5>Все записи...</h5>
 					</div>
 
 					<div class="main-right__search">
@@ -125,9 +133,7 @@
 
 								<div class="row d-flex">
 									<div class="col-md">
-										<div class="card-friends__ava">
-											<img class="js-user-ava" src="images/ava.jpg" alt="ava">
-										</div>
+										<div class="card-friends__ava"></div>
 									</div>
 
 									<div class="col-md list">
@@ -141,7 +147,7 @@
 											</li>
 
 											<li class="list-group-item">
-												<button class="btn btn-delete-user" type="button">Удалить из друзей</button>
+												<button class="btn btn-delete-user" type="button">Удалить запись</button>
 											</li>
 										</ul>
 									</div>
@@ -152,9 +158,9 @@
 					</div><!-- cards-wrapper -->
 
 					<!-- preloader -->
-					<div id="preloader">
+					<!-- <div id="preloader">
 						<img src="./images/preloader.svg" alt="preloader">
-					</div>
+					</div> -->
 
 					<!-- 	mymodal-all-info -->
 					<div id="mymodal" class="mymodal">
@@ -183,16 +189,21 @@
 									Email
 								</div>
 
+								<h6>Телефон:</h6>
+								<div class="mymodal-item js-tel">
+									8-888-888-888
+								</div>
+
 								<div class="mymodal-item">
 									<h6>Описание друга</h6>
-									<textarea disabled="disabled">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sint dolorem delectus debitis atque culpa vero id placeat quasi et. Ab accusantium eligendi nostrum numquam veritatis. Dolorum, veniam praesentium delectus animi dicta quisquam dolores molestiae! Neque at minima doloribus quae animi, aliquam est, incidunt delectus, commodi in placeat officia praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti sequi dicta molestiae! Laboriosam autem nesciunt sint nobis atque culpa tempore velit asperiores animi, esse maiores quisquam aliquid? Minus obcaecati nisi maiores a excepturi ex architecto recusandae? Quam error sequi totam omnis, dolore cupiditate eos a, similique repudiandae nesciunt quasi delectus.
+									<textarea class="js-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sint dolorem delectus debitis atque culpa vero id placeat quasi et. Ab accusantium eligendi nostrum numquam veritatis. Dolorum, veniam praesentium delectus animi dicta quisquam dolores molestiae! Neque at minima doloribus quae animi, aliquam est, incidunt delectus, commodi in placeat officia praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti sequi dicta molestiae! Laboriosam autem nesciunt sint nobis atque culpa tempore velit asperiores animi, esse maiores quisquam aliquid? Minus obcaecati nisi maiores a excepturi ex architecto recusandae? Quam error sequi totam omnis, dolore cupiditate eos a, similique repudiandae nesciunt quasi delectus.
 									</textarea>
 								</div>
 							</div>
 						</div>
 
 					</div><!-- 	/ mymodal-all-info -->
-
+			
 				</div><!-- / main-right -->
 			</div>
 		</div>

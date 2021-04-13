@@ -3,72 +3,9 @@ const $mainRight = document.getElementById('main-right');
 const $cardsWrapper = document.getElementById('cards-wrapper');
 const $cardTpl = document.getElementById('card-frends-template');
 
-const $preloader = document.querySelector('#preloader');
+/* const $preloader = document.querySelector('#preloader'); */
 
-const $jsBtnInfo = document.querySelector('.js-btn-info');
 const $modal = document.getElementById('mymodal');
-const $closeModal = document.querySelector('.close-mymodal');
-
-// флаги
-let preventRequesting = false;
-let stopRequest = true;
-let preventRequestInModal = false;
-let pageNumber = 1;
-
-// HTTP-запрос к серверу без перезагрузки страницы
-function request(method, url) {
-	return new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open(method, url);
-		xhr.send();
-		xhr.onload = function () {
-			if (xhr.status === 200) {
-				resolve(JSON.parse(xhr.response));
-			} else {
-				reject(xhr);
-			}
-		}
-	});
-}
-
-// запрос
-function makeRequest() {
-	request('GET', `https://reqres.in/api/users?page=${pageNumber}&per_page=3`)
-		.then(function (response) {
-			const cardsArray = response.data;
-
-			// условие для остановки запросов
-			if (cardsArray.length === 0) {
-				stopRequest = false;
-			}
-			// скрываю лоадер
-			$preloader.classList.add('hide');
-
-			// предотвращаю запрос
-			preventRequesting = false;
-
-			// перебираю массив и отрисовываю карточку
-			cardsArray.forEach((user) => {
-				const $card = $cardTpl.cloneNode(true);
-
-				$card.removeAttribute('id');
-				$card.removeAttribute('style');
-
-				const $userName = $card.querySelector('.js-user-name');
-				const $userAva = $card.querySelector('.js-user-ava');
-
-				$userName.textContent = `${user.first_name}`;
-				$userAva.setAttribute('src', user.avatar);
-
-				$card.setAttribute('data-user_id', user.id);
-				$cardsWrapper.append($card);
-
-			});
-		});
-}
-// вызов функции
-makeRequest();
-
 
 // удалить карточку через делегирование
 // открыть модальное окно через делегирование
@@ -78,60 +15,26 @@ $mainRight.addEventListener('click', event => {
 		deleteCardUser.remove();
 	}
 
-	// добавление данных в модальное окно
-	if (!preventRequestInModal) {
-		if (event.target.classList.contains('js-btn-info')) {
+	if (event.target.classList.contains('js-btn-info')) {
+		mymodal.style.display = 'block';
+	}
 
-			const $userCard = event.target.closest('.card-friends');
-			const id = $userCard.getAttribute('data-user_id');
-
-			preventRequestInModal = true;
-
-			request('GET', `https://reqres.in/api/users/${id}`)
-				.then(response => {
-
-					preventRequestInModal = false;
-
-					const user = response.data;
-
-					const $userName = document.querySelector('#js-user-name');
-					const $userLastName = document.querySelector('.js-last-name');
-					const $userEmail = document.querySelector('.js-email');
-
-					$userName.textContent = `${user.first_name}`;
-					$userLastName.textContent = `${user.last_name}`;
-					$userEmail.textContent = `${user.email}`;
-
-					mymodal.style.display = 'block';
-				});
-		}
+	if (event.target.classList.contains('fa-times-circle')) {
+		mymodal.style.display = 'none';
 	}
 });
 
-// скролл страницы
-window.addEventListener('scroll', () => {
-	if (stopRequest) {
-		if (!preventRequesting && (Math.ceil(window.pageYOffset + innerHeight) + 150) > document.body.clientHeight) {
-			preventRequesting = true;
-			pageNumber++;
-			$preloader.classList.remove('hide');
-			makeRequest();
-		}
-	}
-});
-
-// закрываю модальное окно на крест
-$closeModal.addEventListener('click', () => {
-	mymodal.style.display = 'none';
-});
 
 // закрываю модальное по нажатию на пустое место
 window.addEventListener('click', event => {
 	if (event.target == $modal) {
 		mymodal.style.display = 'none';
 	}
-});
 
+	if (event.target == $modalCreateFriend) {
+		modal_cf.style.display = 'none';
+	}
+});
 
 // модальное окно по созданию записи о друге
 const $btnCreateFriend = document.getElementById('btn-create-friend');
@@ -147,12 +50,38 @@ $closeModalCreateFriend.addEventListener('click', () => {
 	modal_cf.style.display = 'none';
 });
 
-// закрываю модальное по нажатию на пустое место
-window.addEventListener('click', event => {
-	if (event.target == $modalCreateFriend) {
-		modal_cf.style.display = 'none';
-	}
+// отправка формы
+const $form = document.getElementById('modal-cf-form');
+$form.addEventListener('submit', submitHandler);
+
+function submitHandler(event) {
+	event.preventDefault();
+	//event.target.reset();
+
+	const formData = new FormData($form);
+	const values = Object.fromEntries(formData.entries());
+
+	const localValues = JSON.stringify(values);
+	console.log(localValues);
+}
+
+// запись успешно создана
+const $btnNoteDone = document.querySelector('.modal-cf-form-btn');
+
+$btnNoteDone.addEventListener('click', () => {
+	note_done.style.display = 'block';
+	modal_cf.style.display = 'none';
+
+	setTimeout(() => {
+		note_done.style.display = 'none';
+	}, 2000);
 });
+
+// пример
+/* const $form = document.querySelectorAll('input');
+for (let i = 0; i < $form.length; i++) {
+	console.log($form[i].value);
+} */
 
 // загрузка фотографии
 upload({
@@ -160,52 +89,85 @@ upload({
 });
 
 function upload(options = {}) {
-	const $input = document.querySelector('#modal-cf-file');
-	const $open = document.createElement('button');
+	const $uploadImg = document.getElementById('modal-cf-file');
 	const $avaInModal = document.querySelector('.modal-cf-ava');
 
-	$open.classList.add('modal-cf-file-btn')
+	const $open = document.createElement('button');
+	$open.classList.add('modal-cf-file-btn');
 	$open.textContent = 'Выбрать фотографию';
 
+	$open.addEventListener('click', triggerInput);
+	$uploadImg.addEventListener('change', changeImg);
+
+	$uploadImg.insertAdjacentElement('afterend', $open);
+
 	if (options.accept && Array.isArray(options.accept)) {
-		$input.setAttribute('accept', options.accept.join(','));
+		$uploadImg.setAttribute('accept', options.accept.join(','));
 	}
 
-	$input.insertAdjacentElement('afterend', $open);
-
-	const triggerInput = () => $input.click();
-	const changeHandler = event => {
-		// если нет файлов, то не нужно делать функционал
+	function changeImg(event) {
 		if (!event.target.files.length) {
 			return
 		}
 
-		// пишу логику если файл есть
-		// с помощью Array.from привожу к массиву
-		const files = Array.from(event.target.files);
+		const reader = new FileReader();
 
-		files.forEach(file => {
-			// если в file не содержится строчки 'image', то ничего не делается
-			if (!file.type.match('image')) {
-				return
-			}
+		reader.onload = event => {
+			$avaInModal.innerHTML = `<img src="${event.target.result}" alt=""/>`;
+		}
 
-			// создаю reader
-			const reader = new FileReader();
-
-			// перед тем, как начинаю что-то считывать, добавляю обработчик события, что как только с помощью reader считаю файл, тогда будет выполнение
-			reader.onload = event => {
-				const src = event.target.result;
-				$avaInModal.innerHTML = `<img src="${event.target.result}" alt=${file.name}/>`;
-			}
-
-			// после кода выше считываю сам файл
-			// readAsDataURL асинхронный, поэтому выше стоит обработчик событий
-			reader.readAsDataURL(file);
-		});
+		reader.readAsDataURL(this.files[0]);
 	}
 
-	$open.addEventListener('click', triggerInput);
-	$input.addEventListener('change', changeHandler);
+	function triggerInput(event) {
+		event.preventDefault();
+		$uploadImg.click();
+	}
 }
+
+// работа с формой
+/* const $form = document.getElementById('modal-cf-form');
+$form.addEventListener('submit', submitHandler);
+
+function submitHandler(event) {
+	event.preventDefault();
+	event.target.reset();
+
+	// получаю значения из формы
+	const name = $form.querySelector('[name="name"]'),
+		lastName = $form.querySelector('[name="last-name"]'),
+		email = $form.querySelector('[name="email"]'),
+		tel = $form.querySelector('[name="tel"]'),
+		text = $form.querySelector('[name="text"]');
+
+	// получаю поля из модального окна с информацией
+	const $name = document.querySelector('#js-user-name'),
+		$lastName = document.querySelector('.js-last-name'),
+		$email = document.querySelector('.js-email'),
+		$tel = document.querySelector('.js-tel'),
+		$text = document.querySelector('.js-text');
+
+
+	const $card = $cardTpl.cloneNode(true);
+
+	$card.removeAttribute('id');
+	$card.removeAttribute('style');
+
+	const $nameUser = $card.querySelector('.js-user-name');
+	$nameUser.textContent = name.value;
+	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
+
+	// меняю данные в модальном окне информации на значения из формы
+	$name.textContent = name.value;
+	$lastName.textContent = lastName.value;
+	$email.textContent = email.value;
+	$tel.textContent = tel.value;
+	$text.textContent = text.value;
+} */
+
+
+
+
+
+
 
