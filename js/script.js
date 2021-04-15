@@ -7,6 +7,13 @@ const $cardTpl = document.getElementById('card-frends-template');
 
 const $modal = document.getElementById('mymodal');
 
+// картинка и текст из модального окна с формой
+const $textModal = document.querySelector('.modal-cf-text');
+const $imgModal = document.querySelector('.modal-cf-image');
+
+// глобальная переменная для аватарки
+let imgSrc;
+
 // удалить карточку через делегирование
 // открыть модальное окно через делегирование
 $mainRight.addEventListener('click', event => {
@@ -23,7 +30,6 @@ $mainRight.addEventListener('click', event => {
 		mymodal.style.display = 'none';
 	}
 });
-
 
 // закрываю модальное по нажатию на пустое место
 window.addEventListener('click', event => {
@@ -50,40 +56,94 @@ $closeModalCreateFriend.addEventListener('click', () => {
 	modal_cf.style.display = 'none';
 });
 
-// отправка формы
-const $form = document.getElementById('modal-cf-form');
-$form.addEventListener('submit', submitHandler);
-
-function submitHandler(event) {
-	event.preventDefault();
-	//event.target.reset();
-
-	const formData = new FormData($form);
-	const values = Object.fromEntries(formData.entries());
-
-	const localValues = JSON.stringify(values);
-	console.log(localValues);
-}
-
-// запись успешно создана
-const $btnNoteDone = document.querySelector('.modal-cf-form-btn');
-
-$btnNoteDone.addEventListener('click', () => {
+// закрываю модальное окно
+function closeModal() {
 	note_done.style.display = 'block';
 	modal_cf.style.display = 'none';
 
 	setTimeout(() => {
 		note_done.style.display = 'none';
 	}, 2000);
-});
+}
 
-// пример
-/* const $form = document.querySelectorAll('input');
-for (let i = 0; i < $form.length; i++) {
-	console.log($form[i].value);
+// отправка формы
+const $form = document.getElementById('modal-cf-form');
+$form.addEventListener('submit', submitHandler);
+
+function submitHandler(event) {
+	event.preventDefault();
+
+	const name = $form.querySelector('[name="name"]'),
+		lastName = $form.querySelector('[name="last-name"]'),
+		email = $form.querySelector('[name="email"]'),
+		tel = $form.querySelector('[name="tel"]'),
+		text = $form.querySelector('[name="text"]');
+
+	const values = {
+		name: name.value,
+		lastName: lastName.value,
+		email: email.value,
+		tel: tel.value,
+		text: text.value
+	};
+
+	closeModal();
+	//appendCard(values.name, imgSrc);
+	appendCard(values.name);
+
+	event.target.reset();
+
+	$textModal.style.display = 'block';
+	$imgModal.innerHTML = '';
+}
+
+/* // создание карточки
+function appendCard(name, img) {
+
+	const $card = $cardTpl.cloneNode(true);
+
+	$card.removeAttribute('id');
+	$card.removeAttribute('style');
+
+	const userName = $card.querySelector('.js-user-name');
+	userName.textContent = name;
+
+	const userImg = $card.querySelector('.card-friends__ava');
+
+	if (img) {
+		const userAva = document.createElement('img');
+		userAva.setAttribute('src', img);
+		userImg.appendChild(userAva);
+		imgSrc = '';
+	}
+
+	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
 } */
 
-// загрузка фотографии
+// создание карточки
+function appendCard(name) {
+
+	const $card = $cardTpl.cloneNode(true);
+
+	$card.removeAttribute('id');
+	$card.removeAttribute('style');
+
+	const userName = $card.querySelector('.js-user-name');
+	userName.textContent = name;
+
+	const userImg = $card.querySelector('.card-friends__ava');
+
+	if (imgSrc) {
+		const userAva = document.createElement('img');
+		userAva.setAttribute('src', imgSrc);
+		userImg.appendChild(userAva);
+		imgSrc = null;
+	}
+
+	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
+}
+
+// загрузка аватарки в модальном окне
 upload({
 	accept: ['.png', '.jpg', '.jpge', '.gif']
 });
@@ -92,14 +152,10 @@ function upload(options = {}) {
 	const $uploadImg = document.getElementById('modal-cf-file');
 	const $avaInModal = document.querySelector('.modal-cf-ava');
 
-	const $open = document.createElement('button');
-	$open.classList.add('modal-cf-file-btn');
-	$open.textContent = 'Выбрать фотографию';
-
-	$open.addEventListener('click', triggerInput);
+	$avaInModal.addEventListener('click', triggerInput);
 	$uploadImg.addEventListener('change', changeImg);
 
-	$uploadImg.insertAdjacentElement('afterend', $open);
+	$uploadImg.insertAdjacentElement('afterend', $avaInModal);
 
 	if (options.accept && Array.isArray(options.accept)) {
 		$uploadImg.setAttribute('accept', options.accept.join(','));
@@ -113,7 +169,12 @@ function upload(options = {}) {
 		const reader = new FileReader();
 
 		reader.onload = event => {
-			$avaInModal.innerHTML = `<img src="${event.target.result}" alt=""/>`;
+			$imgModal.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
+
+			$imgModal.style.display = 'block';
+			$textModal.style.display = 'none';
+
+			imgSrc = event.target.result;
 		}
 
 		reader.readAsDataURL(this.files[0]);
@@ -125,49 +186,78 @@ function upload(options = {}) {
 	}
 }
 
-// работа с формой
-/* const $form = document.getElementById('modal-cf-form');
-$form.addEventListener('submit', submitHandler);
+// загрузка аватарки пользователя
+uploadUserAva({
+	accept: ['.png', '.jpg', '.jpge', '.gif']
+});
 
-function submitHandler(event) {
-	event.preventDefault();
-	event.target.reset();
+function uploadUserAva(options = {}) {
+	const $uploadUserAva = document.getElementById('main_left__file');
+	const $userAva = document.querySelector('.main_left__ava');
 
-	// получаю значения из формы
-	const name = $form.querySelector('[name="name"]'),
-		lastName = $form.querySelector('[name="last-name"]'),
-		email = $form.querySelector('[name="email"]'),
-		tel = $form.querySelector('[name="tel"]'),
-		text = $form.querySelector('[name="text"]');
+	$userAva.addEventListener('click', triggerInput);
+	$uploadUserAva.addEventListener('change', changeImg);
 
-	// получаю поля из модального окна с информацией
-	const $name = document.querySelector('#js-user-name'),
-		$lastName = document.querySelector('.js-last-name'),
-		$email = document.querySelector('.js-email'),
-		$tel = document.querySelector('.js-tel'),
-		$text = document.querySelector('.js-text');
+	$uploadUserAva.insertAdjacentElement('afterend', $userAva);
 
+	if (options.accept && Array.isArray(options.accept)) {
+		$uploadUserAva.setAttribute('accept', options.accept.join(','));
+	}
 
-	const $card = $cardTpl.cloneNode(true);
+	function changeImg(event) {
+		if (!event.target.files.length) {
+			return
+		}
 
-	$card.removeAttribute('id');
-	$card.removeAttribute('style');
+		const reader = new FileReader();
 
-	const $nameUser = $card.querySelector('.js-user-name');
-	$nameUser.textContent = name.value;
-	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
+		reader.onload = event => {
+			$userAva.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
+		}
 
-	// меняю данные в модальном окне информации на значения из формы
-	$name.textContent = name.value;
-	$lastName.textContent = lastName.value;
-	$email.textContent = email.value;
-	$tel.textContent = tel.value;
-	$text.textContent = text.value;
-} */
+		reader.readAsDataURL(this.files[0]);
+	}
 
+	function triggerInput(event) {
+		event.preventDefault();
+		$uploadUserAva.click();
+	}
+}
 
+// загрузка аватарки в карточке
+uploadUserAva({
+	accept: ['.png', '.jpg', '.jpge', '.gif']
+});
 
+function uploadUserAva(options = {}) {
+	const $uploadUserAva = document.getElementById('card-friends__file');
+	const $userAva = document.querySelector('.card-friends__ava');
 
+	$userAva.addEventListener('click', triggerInput);
+	$uploadUserAva.addEventListener('change', changeImg);
 
+	$uploadUserAva.insertAdjacentElement('afterend', $userAva);
 
+	if (options.accept && Array.isArray(options.accept)) {
+		$uploadUserAva.setAttribute('accept', options.accept.join(','));
+	}
 
+	function changeImg(event) {
+		if (!event.target.files.length) {
+			return
+		}
+
+		const reader = new FileReader();
+
+		reader.onload = event => {
+			$userAva.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
+		}
+
+		reader.readAsDataURL(this.files[0]);
+	}
+
+	function triggerInput(event) {
+		event.preventDefault();
+		$uploadUserAva.click();
+	}
+}

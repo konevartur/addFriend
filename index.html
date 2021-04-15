@@ -48,7 +48,13 @@
 
 				<!-- main-left -->
 				<div class="main-left col-md-4 p-3">
-					<div class="main-left__ava"></div>
+					<!-- <div class="main-left__ava"></div> -->
+
+					<input id="main_left__file" type="file">
+
+					<div class="main_left__ava">
+						Здесь может быть ваша фотография
+					</div>
 
 					<div class="main-left__button">
 						<div>
@@ -64,14 +70,18 @@
 							<span class="close-modal-cf"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
 
 							<form id="modal-cf-form" class="modal-cf-form">
-								<div class="modal-cf-ava modal-cf-item">
-									Здесь может быть фотография вашего друга <br> или подруги
-								</div>
 
 								<input id="modal-cf-file" type="file">
 
+								<div class="modal-cf-ava modal-cf-item">
+									<div class="modal-cf-text">Здесь может быть фотография вашего друга или подруги</div>
+
+									<div class="modal-cf-image"></div>
+								</div>
+
 								<div class="modal-cf-item">
-									<input class="modal-cf-form-input modal-cf-name" type="text" name="name" placeholder="Имя друга / подруги">
+									<input class="modal-cf-form-input modal-cf-name" type="text" name="name"
+										placeholder="Имя друга / подруги">
 								</div>
 
 								<div class="modal-cf-item">
@@ -133,7 +143,13 @@
 
 								<div class="row d-flex">
 									<div class="col-md">
-										<div class="card-friends__ava"></div>
+										<div class="card-friends__ava">
+
+											<input id="card-friends__file" type="file">
+
+											Здесь может быть фотография вашего друга или подруги
+
+										</div>
 									</div>
 
 									<div class="col-md list">
@@ -203,7 +219,7 @@
 						</div>
 
 					</div><!-- 	/ mymodal-all-info -->
-			
+
 				</div><!-- / main-right -->
 			</div>
 		</div>
