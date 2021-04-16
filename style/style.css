@@ -7,7 +7,6 @@
 
 body {
 	background: #C69C6C;
-	padding-bottom: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -58,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 /* main-left */
 .main-left {
 	height: 290px;
+	margin-bottom: 13px;
 	background: #794820;
 	border-top: 1px solid #C69C6C;
 	border-radius: 5px;
@@ -304,65 +304,29 @@ input[type=file] {
 
 /* main-right 
 ==============================*/
-.main-right {
-	background: #C69C6C;
-}
-
-.main-right__frends {
-	width: 100%;
-	min-height: 50px;
-
-	margin-bottom: 20px;
-
-	padding-top: 15px;
-	border-bottom: 1px solid #794820;;
-}
-
-.main-right__frends h5 {
-	margin-bottom: 0;
-	color: #794820;
-	font-size: 26px;
-	font-family: "Caveat";
-	font-style: italic;
-	font-weight: bold;
-}
-
-.main-right__search {
-	position: relative;
-}
-
-.main-right__search .form-control {
-	padding-left: 50px;
-	color: #794820;
-}
-
-.main-right__search-magnifier {
-	position: absolute;
-	top: 6px;
-	left: 17px;
-	color: #794820;
-}
 
 /* card-friends 
 ===========================*/
 .card-friends {
-	margin-top: 20px;
+	max-width: 605px;
+	min-height: 290px;
+	margin-bottom: 13px;
 	padding: 20px;
 	background: #794820;
+
+	border-top: 1px solid #C69C6C;
 	border-radius: 5px;
 }
 
 .card-friends__ava {
 	width: 200px;
 	height: 200px;
-	margin: 0 auto;
-	margin-bottom: 20px;
+	margin: 0 auto 20px;
 	
 	background: #C69C6C;
 	border-radius: 50%;
 	overflow: hidden;
 
-	cursor: pointer;
 	color: #794820;
 	font-size: 16px;
 	text-align: center;
@@ -379,6 +343,10 @@ input[type=file] {
   object-position: center;
 }
 
+.fa-user-circle-o {
+	font-size: 170px;
+	color: #794820;
+}
 
 .card-friends .btn {
 	width: 150px;
@@ -420,24 +388,6 @@ input[type=file] {
 
 .card-friends .btn-delete-user:hover {
 	background-color: #9e2a2b;
-}
-
-/* скрытые элементы в карточке 
-===================================*/
-.js-user-lastname {
-	display: none;
-}
-
-.js-user-email {
-	display: none;
-}
-
-.js-user-tel {
-	display: none;
-}
-
-.js-user-text {
-	display: none;
 }
 
 /* mymodal-all-info

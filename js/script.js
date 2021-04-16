@@ -9,6 +9,9 @@ const $modal = document.getElementById('mymodal');
 const $textModal = document.querySelector('.modal-cf-text');
 const $imgModal = document.querySelector('.modal-cf-image');
 
+// пустая картинка из карточки
+const $emptyAva = document.querySelector('.card-friends__empty_ava');
+
 // глобальная переменная для аватарки
 let imgSrc;
 
@@ -88,7 +91,6 @@ function submitHandler(event) {
 	};
 
 	closeModal();
-	/* appendCard(values.name); */
 	appendCard(valuesForm);
 
 	event.target.reset();
@@ -104,22 +106,15 @@ const $friendEmail = document.querySelector('.js-email');
 const $friendTel = document.querySelector('.js-tel');
 const $friendText = document.querySelector('.js-text');
 
+// вставляю значения из формы в модальное окно карточки
 function appendInfoFriend(event) {
-	let friendNameModal = event.target.parentNode.parentNode.children[0].innerText;
+	const $card = event.target.closest('.card-friends');
 
-	let friendLastNameModal = event.target.parentNode.parentNode.children[1].innerText; 
-
-	let friendEmailModal = event.target.parentNode.parentNode.children[2].innerText; 
-
-	let friendTelModal = event.target.parentNode.parentNode.children[3].innerText;
-
-	let friendTextModal = event.target.parentNode.parentNode.children[4].innerText;
-
-	$friendNameFromModal.textContent = friendNameModal;
-	$friendLastNameFromModal.textContent = friendLastNameModal;
-	$friendEmail.textContent = friendEmailModal;
-	$friendTel.textContent = friendTelModal;
-	$friendText.textContent = friendTextModal;
+	$friendNameFromModal.textContent = $card.querySelector('.js-user-name').innerText;
+	$friendLastNameFromModal.textContent = $card.getAttribute('data-lastname');
+	$friendEmail.textContent = $card.getAttribute('data-email');
+	$friendTel.textContent = $card.getAttribute('data-tel');
+	$friendText.textContent = $card.getAttribute('data-text');
 }
 
 // создание карточки
@@ -133,53 +128,27 @@ function appendCard(valuesForm) {
 	const userName = $card.querySelector('.js-user-name');
 	userName.textContent = valuesForm.name;
 
-	const userLastName = $card.querySelector('.js-user-lastname');
-	userLastName.textContent = valuesForm.lastName;
-
-	const userEmail= $card.querySelector('.js-user-email');
-	userEmail.textContent = valuesForm.email;
-
-	const userTel= $card.querySelector('.js-user-tel');
-	userTel.textContent = valuesForm.tel;
-
-	const userText= $card.querySelector('.js-user-text');
-	userText.textContent = valuesForm.text;
+	$card.setAttribute('data-lastname', valuesForm.lastName);
+	$card.setAttribute('data-email', valuesForm.email);
+	$card.setAttribute('data-tel', valuesForm.tel);
+	$card.setAttribute('data-text', valuesForm.text);
 
 	const userImg = $card.querySelector('.card-friends__ava');
 
+	debugger
 	if (imgSrc) {
 		const userAva = document.createElement('img');
 		userAva.setAttribute('src', imgSrc);
-		userImg.appendChild(userAva);
+		userImg.insertAdjacentElement('afterbegin', userAva);
 		imgSrc = null;
+		$emptyAva.style.display = 'none'
 	}
-
+	
 	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
 }
 
-/* // создание карточки
-function appendCard(name) {
 
-	const $card = $cardTpl.cloneNode(true);
 
-	$card.removeAttribute('id');
-	$card.removeAttribute('style');
-
-	const userName = $card.querySelector('.js-user-name');
-	userName.textContent = name;
-
-	const userImg = $card.querySelector('.card-friends__ava');
-
-	if (imgSrc) {
-		const userAva = document.createElement('img');
-		userAva.setAttribute('src', imgSrc);
-		userImg.appendChild(userAva);
-		imgSrc = null;
-	}
-
-	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
-}
- */
 // загрузка аватарки в модальном окне
 upload({
 	accept: ['.png', '.jpg', '.jpge', '.gif']
@@ -260,41 +229,3 @@ function uploadUserAva(options = {}) {
 		$uploadUserAva.click();
 	}
 }
-//=====================================================
-/* // загрузка аватарки в карточке — сделать потом
-uploadCardAva({
-	accept: ['.png', '.jpg', '.jpge', '.gif']
-});
-
-function uploadCardAva(options = {}) {
-	const $uploadCardAva = document.getElementById('card-friends__file');
-	const $cardAva = document.getElementById('card-friends__ava');
-
-	$cardAva.addEventListener('click', triggerInput);
-	$uploadCardAva.addEventListener('change', changeImg);
-
-	$uploadCardAva.insertAdjacentElement('afterend', $cardAva);
-
-	if (options.accept && Array.isArray(options.accept)) {
-		$uploadCardAva.setAttribute('accept', options.accept.join(','));
-	}
-
-	function changeImg(event) {
-		if (!event.target.files.length) {
-			return
-		}
-
-		const reader = new FileReader();
-
-		reader.onload = event => {
-			$cardAva.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
-		}
-
-		reader.readAsDataURL(this.files[0]);
-	}
-
-	function triggerInput(event) {
-		event.preventDefault();
-		$uploadCardAva.click();
-	}
-} */

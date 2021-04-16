@@ -48,7 +48,6 @@
 
 				<!-- main-left -->
 				<div class="main-left col-md-4 p-3">
-					<!-- <div class="main-left__ava"></div> -->
 
 					<input id="main_left__file" type="file">
 
@@ -122,19 +121,6 @@
 
 				<!-- main-right -->
 				<div id="main-right" class="main-right col-md-8 align-items-center">
-					<div class="main-right__frends">
-						<h5>Все записи...</h5>
-					</div>
-
-					<div class="main-right__search">
-						<form class="d-flex">
-							<input class="form-control" type="search" placeholder="Поиск друзей" aria-label="Search">
-						</form>
-
-						<div class="main-right__search-magnifier">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</div>
-					</div>
 
 					<div id="cards-wrapper">
 						<!-- card-friends -->
@@ -144,24 +130,18 @@
 								<div class="row d-flex">
 									<div class="col-md">
 
-										<!-- <input id="card-friends__file" type="file"> -->
-
 										<div id="card-friends__ava" class="card-friends__ava">
-											<!-- Здесь может быть фотография вашего друга или подруги -->
+
+											<div class="card-friends__empty_ava">
+												<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+											</div>
+											
 										</div>
 									</div>
 
 									<div class="col-md list">
 										<ul class="list-group">
 											<li class="js-user-name list-group-item name">Имя</li>
-
-											<li class="js-user-lastname list-group-item name">Фамилия</li>
-
-											<li class="js-user-email list-group-item name">Email</li>
-
-											<li class="js-user-tel list-group-item name">Номер телефона</li>
-
-											<li class="js-user-text list-group-item name">Запись о друге</li>
 
 											<li class="list-group-item">
 												<button class="btn js-btn-info" type="button">
