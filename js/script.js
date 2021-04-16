@@ -3,8 +3,6 @@ const $mainRight = document.getElementById('main-right');
 const $cardsWrapper = document.getElementById('cards-wrapper');
 const $cardTpl = document.getElementById('card-frends-template');
 
-/* const $preloader = document.querySelector('#preloader'); */
-
 const $modal = document.getElementById('mymodal');
 
 // картинка и текст из модального окна с формой
@@ -24,6 +22,8 @@ $mainRight.addEventListener('click', event => {
 
 	if (event.target.classList.contains('js-btn-info')) {
 		mymodal.style.display = 'block';
+
+		appendInfoFriend(event);
 	}
 
 	if (event.target.classList.contains('fa-times-circle')) {
@@ -79,7 +79,7 @@ function submitHandler(event) {
 		tel = $form.querySelector('[name="tel"]'),
 		text = $form.querySelector('[name="text"]');
 
-	const values = {
+	const valuesForm = {
 		name: name.value,
 		lastName: lastName.value,
 		email: email.value,
@@ -88,8 +88,8 @@ function submitHandler(event) {
 	};
 
 	closeModal();
-	//appendCard(values.name, imgSrc);
-	appendCard(values.name);
+	/* appendCard(values.name); */
+	appendCard(valuesForm);
 
 	event.target.reset();
 
@@ -97,8 +97,33 @@ function submitHandler(event) {
 	$imgModal.innerHTML = '';
 }
 
-/* // создание карточки
-function appendCard(name, img) {
+// поля из модального окна карточки
+const $friendNameFromModal = document.getElementById('js-user-name');
+const $friendLastNameFromModal = document.querySelector('.js-last-name');
+const $friendEmail = document.querySelector('.js-email');
+const $friendTel = document.querySelector('.js-tel');
+const $friendText = document.querySelector('.js-text');
+
+function appendInfoFriend(event) {
+	let friendNameModal = event.target.parentNode.parentNode.children[0].innerText;
+
+	let friendLastNameModal = event.target.parentNode.parentNode.children[1].innerText; 
+
+	let friendEmailModal = event.target.parentNode.parentNode.children[2].innerText; 
+
+	let friendTelModal = event.target.parentNode.parentNode.children[3].innerText;
+
+	let friendTextModal = event.target.parentNode.parentNode.children[4].innerText;
+
+	$friendNameFromModal.textContent = friendNameModal;
+	$friendLastNameFromModal.textContent = friendLastNameModal;
+	$friendEmail.textContent = friendEmailModal;
+	$friendTel.textContent = friendTelModal;
+	$friendText.textContent = friendTextModal;
+}
+
+// создание карточки
+function appendCard(valuesForm) {
 
 	const $card = $cardTpl.cloneNode(true);
 
@@ -106,21 +131,33 @@ function appendCard(name, img) {
 	$card.removeAttribute('style');
 
 	const userName = $card.querySelector('.js-user-name');
-	userName.textContent = name;
+	userName.textContent = valuesForm.name;
+
+	const userLastName = $card.querySelector('.js-user-lastname');
+	userLastName.textContent = valuesForm.lastName;
+
+	const userEmail= $card.querySelector('.js-user-email');
+	userEmail.textContent = valuesForm.email;
+
+	const userTel= $card.querySelector('.js-user-tel');
+	userTel.textContent = valuesForm.tel;
+
+	const userText= $card.querySelector('.js-user-text');
+	userText.textContent = valuesForm.text;
 
 	const userImg = $card.querySelector('.card-friends__ava');
 
-	if (img) {
+	if (imgSrc) {
 		const userAva = document.createElement('img');
-		userAva.setAttribute('src', img);
+		userAva.setAttribute('src', imgSrc);
 		userImg.appendChild(userAva);
-		imgSrc = '';
+		imgSrc = null;
 	}
 
 	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
-} */
+}
 
-// создание карточки
+/* // создание карточки
 function appendCard(name) {
 
 	const $card = $cardTpl.cloneNode(true);
@@ -142,7 +179,7 @@ function appendCard(name) {
 
 	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
 }
-
+ */
 // загрузка аватарки в модальном окне
 upload({
 	accept: ['.png', '.jpg', '.jpge', '.gif']
@@ -223,23 +260,23 @@ function uploadUserAva(options = {}) {
 		$uploadUserAva.click();
 	}
 }
-
-// загрузка аватарки в карточке
-uploadUserAva({
+//=====================================================
+/* // загрузка аватарки в карточке — сделать потом
+uploadCardAva({
 	accept: ['.png', '.jpg', '.jpge', '.gif']
 });
 
-function uploadUserAva(options = {}) {
-	const $uploadUserAva = document.getElementById('card-friends__file');
-	const $userAva = document.querySelector('.card-friends__ava');
+function uploadCardAva(options = {}) {
+	const $uploadCardAva = document.getElementById('card-friends__file');
+	const $cardAva = document.getElementById('card-friends__ava');
 
-	$userAva.addEventListener('click', triggerInput);
-	$uploadUserAva.addEventListener('change', changeImg);
+	$cardAva.addEventListener('click', triggerInput);
+	$uploadCardAva.addEventListener('change', changeImg);
 
-	$uploadUserAva.insertAdjacentElement('afterend', $userAva);
+	$uploadCardAva.insertAdjacentElement('afterend', $cardAva);
 
 	if (options.accept && Array.isArray(options.accept)) {
-		$uploadUserAva.setAttribute('accept', options.accept.join(','));
+		$uploadCardAva.setAttribute('accept', options.accept.join(','));
 	}
 
 	function changeImg(event) {
@@ -250,7 +287,7 @@ function uploadUserAva(options = {}) {
 		const reader = new FileReader();
 
 		reader.onload = event => {
-			$userAva.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
+			$cardAva.innerHTML = `<img src="${event.target.result}" alt="ava"/>`;
 		}
 
 		reader.readAsDataURL(this.files[0]);
@@ -258,6 +295,6 @@ function uploadUserAva(options = {}) {
 
 	function triggerInput(event) {
 		event.preventDefault();
-		$uploadUserAva.click();
+		$uploadCardAva.click();
 	}
-}
+} */

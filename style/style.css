@@ -173,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 
 	color: #C69C6C;
-	font-size: 11px;
+	font-size: 15px;
 	text-align: center;
 
 	display: flex;
@@ -422,21 +422,23 @@ input[type=file] {
 	background-color: #9e2a2b;
 }
 
-/* preloader 
-=======================*/
-/* #preloader {
-	width: 200px;
-	margin: 0 auto;
-	z-index: 100;
+/* скрытые элементы в карточке 
+===================================*/
+.js-user-lastname {
+	display: none;
 }
 
-#preloader img{
-	width: 100%;
-} */
-
-/* .hide {
+.js-user-email {
 	display: none;
-} */
+}
+
+.js-user-tel {
+	display: none;
+}
+
+.js-user-text {
+	display: none;
+}
 
 /* mymodal-all-info
 =======================*/
