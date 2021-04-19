@@ -17,40 +17,19 @@ h1, h2, h3, h4, h5, h6 {
 /* header
 =========================== */
 .header {
+	padding: 10px 0;
+	text-align: center;
 	background: #794820;
 }
 
-.navbar-light .navbar-brand {
-	color: #C69C6C !important;
+.header__text {
+	color: #C69C6C;
 
-	font-size: 36px;
+	font-size: 40px;
 	font-family: "Caveat";
 	font-style: italic;
 	font-weight: bold;
-
-	transition: .5s linear;
 }
-
-.navbar-light .navbar-brand:hover {
-	transform: scale(1.1);
-}
-
-.header .btn {
-	margin-left: 10px;
-	color: #fff;
-	border: 1px solid #fff;
-}
-
-.header .btn:hover {
-	background-color: #C69C6C;
-	border: 0;
-	outline: 0;
-}
-
-.header .btn:first-child {
-	margin-left: 0;
-}
-
 
 /* main
 =========================== */

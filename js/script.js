@@ -9,9 +9,6 @@ const $modal = document.getElementById('mymodal');
 const $textModal = document.querySelector('.modal-cf-text');
 const $imgModal = document.querySelector('.modal-cf-image');
 
-// пустая картинка из карточки
-const $emptyAva = document.querySelector('.card-friends__empty_ava');
-
 // глобальная переменная для аватарки
 let imgSrc;
 
@@ -133,21 +130,24 @@ function appendCard(valuesForm) {
 	$card.setAttribute('data-tel', valuesForm.tel);
 	$card.setAttribute('data-text', valuesForm.text);
 
+	// пустая картинка из карточки
+	const $emptyAva = $card.querySelector('.card-friends__empty_ava');
+	$emptyAva.style.display = 'none';
+
 	const userImg = $card.querySelector('.card-friends__ava');
 
-	debugger
 	if (imgSrc) {
 		const userAva = document.createElement('img');
 		userAva.setAttribute('src', imgSrc);
 		userImg.insertAdjacentElement('afterbegin', userAva);
 		imgSrc = null;
-		$emptyAva.style.display = 'none'
 	}
-	
+	else {
+		$emptyAva.style.display = 'block';
+	}
+
 	$cardsWrapper.insertAdjacentElement('afterbegin', $card);
 }
-
-
 
 // загрузка аватарки в модальном окне
 upload({
