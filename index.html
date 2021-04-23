@@ -9,35 +9,33 @@
 		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<link rel="stylesheet" href="style/font-awesome.min.css">
 	<link rel="stylesheet" href="style/style.css">
+
+	<!-- fav -->
+	<link rel="apple-touch-icon" sizes="57x57" href="fav/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="fav/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="fav/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="fav/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="fav/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="fav/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="fav/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="fav/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="fav/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="fav/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="fav/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png">
+	<link rel="manifest" href="fav/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="fav/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
 	<title>FriendsBook</title>
 </head>
 
 <body>
 
-	<header class="header d-flex">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container">
-					<a class="navbar-brand" href="#">FriendsBook</a>
-
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<div class="navbar-nav me-auto mb-2">
-						</div>
-						<form class="d-flex">
-							<button class="btn" type="submit" name="login">Войти</button>
-							<button class="btn" type="submit" name="logout">Выйти</button>
-							<button class="btn" type="submit" name="registration">Регистрация</button>
-						</form>
-					</div>
-				</div>
-			</nav>
-		</div>
+	<header class="header">
+		<h1 class="header__text">FriendsBook</h1>
 	</header>
 
 	<!-- main -->
@@ -46,73 +44,155 @@
 		<div class="container">
 			<div class="row">
 
-				<!-- main-left -->
-				<div class="main-left col-sm-4 p-3">
-					<div class="main-left__ava">
-						<img src="images/ava.jpg" alt="ava">
+				<!-- left -->
+				<div class="left col-md-4 p-3">
+
+					<input id="left__file" type="file">
+
+					<div class="left__ava">
+						Здесь может быть ваша фотография
 					</div>
 
-					<div class="main-left__button">
+					<div class="left__button">
 						<div>
-							<a class="btn mt-3" href="#" target="blank">Создать друга!</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- main-right -->
-				<div id="main-right" class="main-right col-sm-8">
-					<div class="main-right__frends">
-						<h5>Все друзья ...</h5>
-					</div>
-
-					<div class="main-right__search">
-						<form class="d-flex">
-							<input class="form-control" type="search" placeholder="Поиск друзей" aria-label="Search">
-						</form>
-
-						<div class="main-right__search-magnifier">
-							<i class="fa fa-search" aria-hidden="true"></i>
+							<button class="btn btn__create-node mt-3" type="button">Создать запись</button>
 						</div>
 					</div>
 
-					<!-- card-friends -->
-					<div id="card-frends-template" class="card-friends d-flex align-items-center text-center"
-						style="display: none !important;">
-						<div class="container">
+					<!-- 	modal_create_node -->
+					<div class="modal_create_node">
 
-							<div class="row d-flex">
-								<div class="col-md">
-									<div class="card-friends__ava">
-										<img class="js-user-ava" src="images/ava.jpg" alt="ava">
-									</div>
+						<div class="modal_create_node__content">
+
+							<span class="modal_create_node__btn_close"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+
+							<form class="modal_create_node__form">
+
+								<input id="modal_create_node__file" type="file">
+
+								<div class="modal_create_node__ava">
+									<div class="modal_create_node__text">Выбрать фотографию</div>
+
+									<div class="modal_create_node__image"></div>
 								</div>
 
-								<div class="col-md list">
-									<ul class="list-group">
-										<li class="js-user-name list-group-item name">Имя</li>
+								<div>
+									<input class="modal_create_node__input" type="text" name="name" placeholder="Имя друга / подруги">
+								</div>
 
-										<li class="list-group-item">
-											<button class="btn" type="button">
-												Полная информация
-											</button>
-										</li>
+								<div>
+									<input class="modal_create_node__input" type="text" name="last-name"
+										placeholder="Фамилия друга / подруги">
+								</div>
 
-										<li class="list-group-item">
-											<button type="button" class="btn btnDelete">Удалить из друзей</button>
-										</li>
-									</ul>
+								<div>
+									<input class="modal_create_node__input" type="email" name="email" placeholder="Email друга / подруги">
+								</div>
+
+								<div>
+									<input class="modal_create_node__input" type="tel" name="tel" placeholder="Телефон друга / подруги">
+								</div>
+
+								<div class="">
+									<textarea class="modal_create_node__textarea" name="text" placeholder="Заметка"></textarea>
+								</div>
+
+								<div>
+									<button class="modal_create_node__btn" type="submit">Создать запись</button>
+								</div>
+
+							</form>
+						</div>
+
+					</div><!-- 	/ modal__create_node -->
+
+					<!-- note_done  -->
+					<div id="note_done">
+						<div class="note_done__content">
+							<p>Запись успешно создана!</p>
+						</div>
+					</div>
+
+				</div> <!-- / left -->
+
+				
+				<!-- right -->
+				<div class="right col-md-8 align-items-center">
+
+					<div id="cards_wrapper">
+						<!-- card_friends -->
+						<div id="card_frends_template" class="card_friends d-flex text-center" style="display: none !important;">
+							<div class="container">
+
+								<div class="row d-flex">
+									<div class="col-md">
+
+										<div class="card_friends__ava">
+
+											<div class="card_friends__empty_ava">
+												<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-md list">
+										<ul class="list-group">
+											<li class="card_friends__name list-group-item">Имя</li>
+
+											<li class="list-group-item">
+												<button class="btn card_friends__btn_info" type="button">
+													Полная информация
+												</button>
+											</li>
+
+											<li class="list-group-item">
+												<button class="btn card_friends__btn_delete" type="button">Удалить запись</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div><!-- / card_friends -->
+					</div><!-- / cards_wrapper -->
+
+					<!-- 	modal_info -->
+					<div class="modal_info">
+
+						<div class="modal_info__content">
+
+							<div class="modal_info__header">
+								<h4>Полная информация</h4>
+							</div>
+
+							<span class="modal_info__btn_close"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+
+							<div class="modal_info__items">
+								<h6>Имя:</h6>
+								<div class="modal_info__name"></div>
+
+								<h6>Фамилия:</h6>
+								<div class="modal_info__last_name"></div>
+
+								<h6>Email:</h6>
+								<div class="modal_info__email"></div>
+
+								<h6>Телефон:</h6>
+								<div class="modal_info__tel"></div>
+
+								<div>
+									<h6>Заметка:</h6>
+									<textarea class="modal_info__text"></textarea>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- / cardFrends -->
 
-				</div><!-- main-right -->
-			</div>
-		</div>
-	</main>
-	<!-- /main -->
+					</div><!-- 	/ modal_info  -->
 
+				</div><!-- / right -->
+			</div> <!-- row -->
+		</div> <!-- container -->
+	</main><!-- /main -->
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

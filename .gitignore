@@ -1,2 +1,15 @@
 .idea
 
+/node_modules
+/dist
+/.vscode
+/.firebase
+
+/fav
+/fonts
+
+package-lock.json
+package.json
+gulpfile.js
+firebase.json
+.firebaserc
